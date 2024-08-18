@@ -1,5 +1,5 @@
-#ifndef instruction_code_H
-#define instruction_code_H
+#ifndef INSTRUCTION_CODE_H
+#define INSTRUCTION_CODE_H
 
 #define MAX_LINE_LENGTH 80
 #define MAX_OP_LENGTH 5

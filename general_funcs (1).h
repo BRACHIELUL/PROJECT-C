@@ -7,8 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "errors.h"
 #include "word_list.h"
+#include "errors.h"
+
 
 char *continue_on_blanks(char *line);
 int continue_till_blanks(char *line);

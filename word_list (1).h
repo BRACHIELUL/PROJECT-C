@@ -1,15 +1,16 @@
 #ifndef WORD_LIST_H
 #define WORD_LIST_H
 
+#define MAX_LINE_LENGTH 80
+#define MAX_OP_BIN_LENGTH 15
+#define ARE 2
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "errors.h"
 #include "general_funcs.h"
-
-#define MAX_LINE_LENGTH 80
-#define MAX_OP_BIN_LENGTH 15
-#define ARE 2
 
 typedef struct instdecode
 {
@@ -57,6 +58,8 @@ typedef enum addressingMode
 	INDIRECT_REGISTER_ADDRESSING = 2,
 	DIRECT_REGISTER_ADDRESSING = 3
 } addressingMode;
+
+
 
 instdecode *create_instdecode(instdecode *new_instdecode, int opcode, int dest, int sorc);
 void create_operand_code(opCode *info, int sorc, int dest);

@@ -1,7 +1,7 @@
 #include "print_files.h"
 
-void write_to_files(word* word_list, symbols_to_print* externs_to_print_head,
-                    symbols_to_prin* entries_to_print_head, char* file_name,
+void write_to_files(word* word_list, symbols_to_print_list* externs_to_print_head,
+                    symbols_to_print_list* entries_to_print_head, char* file_name,
                     int ic, int dc, data* data_list) {
     char extern_file[strlen(file_name) + strlen(".ext") + 1];
     char entry_file[strlen(file_name) + strlen(".ent") + 1];
@@ -25,9 +25,9 @@ void write_to_files(word* word_list, symbols_to_print* externs_to_print_head,
     exist_ob_file(word_list, ob_file, ic, dc);
 }
 
-int exist_file(symbols_to_print* list, char* name, int num_digits) {
+int exist_file(symbols_to_print_list* list, char* name, int num_digits) {
     if (list == NULL) {
-        return 0;  /* No need to create a file if list is empty*/
+        return 0;  // No need to create a file if list is empty
     }
 
     FILE *file = fopen(name, "w+");
@@ -48,7 +48,7 @@ int exist_file(symbols_to_print* list, char* name, int num_digits) {
 
 int exist_ob_file(word* list, char* name, int ic_count, int dc_count, data* data_list) {
     if (list == NULL) {
-        return 0;  /* No need to create a file if list is empty*/
+        return 0;  // No need to create a file if list is empty
     }
 
     int IC = 100;

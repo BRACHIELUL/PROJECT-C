@@ -3,16 +3,16 @@
 
 #define MAX_LINE_LENGTH 80
 
-typedef struct label_name{
-	char  name[MAX_LINE_LENGTH];
-	struct label * next;
-} label_name;
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "general_funcs.h"
 
+
+typedef struct label_name{
+	char  name[MAX_LINE_LENGTH];
+	struct label_name * next;
+}label_name;
 
 
 label_name * create_label_name(char *name);
