@@ -1,0 +1,72 @@
+
+
+assembler: main.o  open_macro.o first_pass.o macro_list.o label_list.o print_files.o externs_to_print_list.o second_pass.o labels_in_code.o  data_list.o errors.o entry_list.o extern_list.o word_list.o  main.o general_funcs.o instruction_code.o
+	gcc -ansi -pedantic -Wall open_macro.o main.o first_pass.o label_list.o print_files.o externs_to_print_list.o second_pass.o labels_in_code.o general_funcs.o errors.o data_list.o extern_list.o word_list.o  entry_list.o  instruction_code.o macro_list.o -o assembler
+
+main.o: main.c
+	gcc -c -g -ansi -pedantic -Wall main.c -o main.o
+
+
+
+
+open_macro.o: open_macro.c open_macro.h
+	gcc -c -g -ansi -pedantic -Wall open_macro.c -o open_macro.o
+
+
+
+first_pass.o: first_pass.c first_pass.h
+	gcc -c -g -ansi -pedantic -Wall first_pass.c -o first_pass.o
+
+
+macro_list.o: macro_list.c macro_list.h
+	gcc -c -g -ansi -pedantic -Wall macro_list.c -o macro_list.o
+
+label_list.o: label_list.c label_list.h
+	gcc -c -g -ansi -pedantic -Wall label_list.c -o label_list.o
+
+
+word_list.o: word_list.c word_list.h
+	gcc -c -g -ansi -pedantic -Wall word_list.c -o word_list.o
+
+data_list.o: data_list.c data_list.h
+	gcc -c -g -ansi -pedantic -Wall data_list.c -o data_list.o
+
+entry_list.o: entry_list.c entry_list.h
+	gcc -c -g -ansi -pedantic -Wall entry_list.c -o entry_list.o
+
+
+
+extern_list.o: extern_list.c extern_list.h
+	gcc -c -g -ansi -pedantic -Wall extern_list.c -o extern_list.o
+
+
+instruction_code.o: instruction_code.c instruction_code.h
+	gcc -c -g -ansi -pedantic -Wall instruction_code.c -o instruction_code.o
+
+
+general_funcs.o: general_funcs.c general_funcs.h
+	gcc -c -g -ansi -pedantic -Wall general_funcs.c -o general_funcs.o
+
+errors.o: errors.c errors.h
+	gcc -c -g -ansi -pedantic -Wall errors.c -o errors.o
+
+labels_in_code.o: labels_in_code.c labels_in_code.h
+	gcc -c -g -ansi -pedantic -Wall labels_in_code.c -o labels_in_code.o
+
+
+second_pass.o: second_pass.c second_pass.h
+	gcc -c -g -ansi -pedantic -Wall second_pass.c -o second_pass.o
+
+print_files.o: print_files.c print_files.h
+	gcc -c -g -ansi -pedantic -Wall print_files.c -o print_files.o
+
+externs_to_print_list.o: externs_to_print_list.c externs_to_print_list.h
+	gcc -c -g -ansi -pedantic -Wall externs_to_print_list.c -o externs_to_print_list.o
+
+
+
+
+clean: 
+	rm -rf *.o
+
+

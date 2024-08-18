@@ -1,0 +1,25 @@
+MAIN: add      r3, LIST 
+LOOP:  prn #48 
+
+
+LOOP: add t ug
+
+ 
+lea STR, r6 
+inc       r6 
+mov     *r6,K 
+sub r1, r4 
+	jmp     loop
+	bne  END 
+  .entry   LOOK 
+  .extern    SWIM
+  dec K 
+ jmp  LOOP      
+END:  stop 
+  .string “rach 
+STR:      .string “abcd” 
+  .string “rachel” 
+  .data    -100 
+K:          .data 31 
+	cmp     r3, #-6 
+	bne  END 
