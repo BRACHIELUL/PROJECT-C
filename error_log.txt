@@ -3,3 +3,15 @@ error: extra chars after endmac at line: 16
 error: already existing label at line: 19
 error: already existing label at line: 20
 error: already existing label at line: 21
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16
+error: extra chars on macro call line at line: 9
+error: extra chars after endmac at line: 16

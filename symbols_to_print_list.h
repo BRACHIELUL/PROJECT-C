@@ -17,9 +17,9 @@ typedef struct symbols_to_print{
 	struct symbols_to_print * next;
 } symbols_to_print;
 
-symbols_to_print * create_print_extern(char *name, int line);
-void insert_to_externs_to_print(symbols_to_print **head, char *name, int line);
-void free_data_list(symbols_to_print *head);
+symbols_to_print * create_symbols_to_print(char* name, int line);
+void insert_to_symbols_to_print_table(symbols_to_print **head, char* name, int line) ;
+void free_symbols_to_print_list(symbols_to_print *head);
 
 #endif
 

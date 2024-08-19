@@ -1,7 +1,7 @@
 #include "print_files.h"
 
-void write_to_files(word* word_list, symbols_to_print_list* externs_to_print_head,
-                    symbols_to_print_list* entries_to_print_head, char* file_name,
+void write_to_files(word* word_list, symbols_to_print* externs_to_print_head,
+                    symbols_to_print* entries_to_print_head, char* file_name,
                     int ic, int dc, data* data_list) {
     char extern_file[strlen(file_name) + strlen(".ext") + 1];
     char entry_file[strlen(file_name) + strlen(".ent") + 1];
@@ -22,21 +22,23 @@ void write_to_files(word* word_list, symbols_to_print_list* externs_to_print_hea
     /* Write to entry file */
     exist_file(entries_to_print_head, entry_file, 3);
 
-    exist_ob_file(word_list, ob_file, ic, dc);
+    exist_ob_file(word_list, ob_file, ic, dc,data_list);
 }
 
-int exist_file(symbols_to_print_list* list, char* name, int num_digits) {
+int exist_file(symbols_to_print* list, char* name, int num_digits) {
+    FILE *file=NULL;
+    symbols_to_print* current=NULL;
     if (list == NULL) {
-        return 0;  // No need to create a file if list is empty
+        return 0;  /* No need to create a file if list is empty*/
     }
 
-    FILE *file = fopen(name, "w+");
+    file = fopen(name, "w+");
     if (file == NULL) {
         fprintf(stderr, "Error opening %s file\n", name);
         return 1;
     }
 
-    symbols_to_print_list* current = list;
+    current = list;
     while (current) {
         fprintf(file, "%-4s %0*d\n", current->name, num_digits, current->line);
         current = current->next;
@@ -47,8 +49,10 @@ int exist_file(symbols_to_print_list* list, char* name, int num_digits) {
 }
 
 int exist_ob_file(word* list, char* name, int ic_count, int dc_count, data* data_list) {
+    data* current_data=NULL;
+    word* current=NULL;
     if (list == NULL) {
-        return 0;  // No need to create a file if list is empty
+        return 0;  /* No need to create a file if list is empty*/
     }
 
     int IC = 100;
@@ -58,14 +62,14 @@ int exist_ob_file(word* list, char* name, int ic_count, int dc_count, data* data
         return 1;
     }
     fprintf(file, "   %d %d\n", ic_count, dc_count);
-    word* current = list;
+    current = list;
     while (current) {
-        fprintf(file, "%04d %05d\n", IC,  current.info);
+        fprintf(file, "%04d %05d\n", IC,  current->info);
         current = current->next;
         IC++;
     }
 
-    data* current_data = data_list;
+    current_data = data_list;
     while(current_data) {
         fprintf(file, "%04d %05d\n", IC, current_data->info);
         current_data = current_data->next;
@@ -74,3 +78,4 @@ int exist_ob_file(word* list, char* name, int ic_count, int dc_count, data* data
     fclose(file);
     return 0;
 }
+
